@@ -19,3 +19,7 @@ See https://learnopengl.com/About for more information.'
     cargo run
 
 
+# Getting Started
+![](01_hello_window.png | width=150)
+
+![](01_hello_triangle.png | width=150)
