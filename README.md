@@ -17,3 +17,5 @@ See https://learnopengl.com/About for more information.'
 # To Run
     cd learn_opengl/01_getting_started/01_hello_window
     cargo run
+
+

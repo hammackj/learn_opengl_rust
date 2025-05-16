@@ -69,6 +69,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "hello_triangle"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+]
+
+[[package]]
 name = "hello_window"
 version = "0.1.0"
 dependencies = [

@@ -4,7 +4,6 @@ use glfw::Context;
 
 const SCR_WIDTH: u32 = 800;
 const SCR_HEIGHT: u32 = 600;
-const TITLE: &str = "LearnOpenGL";
 
 fn main() {
     use glfw::fail_on_errors;
@@ -18,7 +17,12 @@ fn main() {
     glfw.window_hint(glfw::WindowHint::ContextVersion(3, 3));
 
     let (mut window, events) = glfw
-        .create_window(SCR_WIDTH, SCR_HEIGHT, TITLE, glfw::WindowMode::Windowed)
+        .create_window(
+            SCR_WIDTH,
+            SCR_HEIGHT,
+            "LearnOpenGL",
+            glfw::WindowMode::Windowed,
+        )
         .unwrap();
 
     window.make_current();
@@ -44,6 +48,7 @@ fn main() {
     }
 }
 
+// This would be the process input function in the C++ version
 fn glfw_handle_event(window: &mut glfw::Window, event: glfw::WindowEvent) {
     use glfw::Action;
     use glfw::Key;
