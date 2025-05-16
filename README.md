@@ -20,6 +20,6 @@ See https://learnopengl.com/About for more information.'
 
 
 # Getting Started
-![](/screenshots/01_hello_window.png | width=150 "Hello Window")
+![Alt Text](/screenshots/01_hello_window.png)
 
-![](/screenshots/01_hello_triangle.png | width=150 "Hello Triangle")
+![Alt Text](/screenshots/01_hello_triangle.png)
