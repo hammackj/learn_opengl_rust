@@ -1,0 +1,16 @@
+[workspace]
+members = ["learn_opengl/*/*"]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+license = "CC4By" #https://learnopengl.com/About
+authors = ["hammackj"]
+
+[workspace.dependencies]
+gl = "0.14.0"
+glfw = "0.59.0"
+
+#[workspace.dependencies.gl]
+#git = "https://github.com/bjz/gl-rs"
