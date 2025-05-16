@@ -14,15 +14,20 @@ See https://learnopengl.com/About for more information.'
 # To Build
     cargo build
 
-# To Run
-    cd learn_opengl/01_getting_started/01_hello_window
-    cargo run
-
-
 # Getting Started
 
 ## Hello Window
-<img src="/screenshots/01_hello_window.png" width="250">
+<img src="/screenshots/01_hello_window.png" width="50%">
+
+    cargo run --bin hello_window
 
 ## Hello Triangle
-<img src="/screenshots/02_hello_triangle.png" width="250">
+<img src="/screenshots/02_hello_triangle.png" width="50%">
+
+    cargo run --bin hello_triangle
+
+## Hello Triangle Indexed
+<img src="/screenshots/03_hello_triangle_indexed.png" width="50%">
+<img src="/screenshots/03_hello_triangle_indexed_wireframe.png" width="50%">
+
+    cargo run --bin hello_triangle_indexed
