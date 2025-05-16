@@ -77,6 +77,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "hello_triangle_exercise_01"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+]
+
+[[package]]
 name = "hello_triangle_indexed"
 version = "0.1.0"
 dependencies = [

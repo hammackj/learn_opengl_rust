@@ -31,3 +31,8 @@ See https://learnopengl.com/About for more information.'
 <img src="/screenshots/03_hello_triangle_indexed_wireframe.png" width="50%">
 
     cargo run --bin hello_triangle_indexed
+
+## Hello Triangle - Exercise 1
+<img src="/screenshots/04_hello_triangle_exercise_01.png" width="50%">
+
+    cargo run --bin hello_triangle_exercise_01

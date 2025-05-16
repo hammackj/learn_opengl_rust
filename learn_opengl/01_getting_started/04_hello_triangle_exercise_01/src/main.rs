@@ -1,3 +1,5 @@
+//Try to draw 2 triangles next to each other using glDrawArrays by adding more vertices to your data:
+
 use gl;
 use glfw;
 use glfw::Context;
@@ -129,26 +131,22 @@ fn main() {
     }
 
     #[rustfmt::skip]
-    let vertices: [f32; 12] = [
-         0.5,  0.5, 0.0,  // top right
-         0.5, -0.5, 0.0,  // bottom right
-        -0.5, -0.5, 0.0,  // bottom left
-        -0.5,  0.5, 0.0   // top left 
-    ];
+    let vertices: [f32; 18] = [
+       (-0.5/2.0)-0.3, (-0.5/2.0)-0.3, 0.0, // bottom left  
+         (0.5/2.0)-0.3, (-0.5/2.0)-0.3, 0.0, // bottom right 
+         0.0 -0.3,  (0.5/2.0)-0.3, 0.0,  // top   
 
-    let indices: [u32; 6] = [
-        0, 1, 3, // first Triangle
-        1, 2, 3, // second Triangle
+        (-0.8/2.0)+0.3, (0.8/2.0)+0.3, 0.0, // bottom left  
+         (0.8/2.0)+0.3, (0.8/2.0)+0.3, 0.0, // bottom right 
+         0.0+0.3,  (-0.8/2.0)+0.3, 0.0  // top   
     ];
 
     let mut vao = 0;
     let mut vbo = 0;
-    let mut ebo = 0;
 
     unsafe {
         gl::GenVertexArrays(1, &mut vao);
         gl::GenBuffers(1, &mut vbo);
-        gl::GenBuffers(1, &mut ebo);
 
         gl::BindVertexArray(vao);
 
@@ -157,14 +155,6 @@ fn main() {
             gl::ARRAY_BUFFER,
             std::mem::size_of_val(&vertices) as isize,
             vertices.as_ptr().cast(),
-            gl::STATIC_DRAW,
-        );
-
-        gl::BindBuffer(gl::ELEMENT_ARRAY_BUFFER, ebo);
-        gl::BufferData(
-            gl::ELEMENT_ARRAY_BUFFER,
-            std::mem::size_of_val(&indices) as isize,
-            indices.as_ptr().cast(),
             gl::STATIC_DRAW,
         );
 
@@ -195,9 +185,8 @@ fn main() {
             gl::UseProgram(shader_program);
             gl::BindVertexArray(vao);
 
-            gl::DrawElements(gl::TRIANGLES, 6, gl::UNSIGNED_INT, std::ptr::null());
+            gl::DrawArrays(gl::TRIANGLES, 0, 6);
 
-            // Seems Optional but doing this for explictiness
             gl::BindVertexArray(0);
         }
 
