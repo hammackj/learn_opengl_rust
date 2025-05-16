@@ -20,5 +20,9 @@ See https://learnopengl.com/About for more information.'
 
 
 # Getting Started
+
+## Hello Window
 <img src="/screenshots/01_hello_window.png" width="250">
+
+## Hello Triangle
 <img src="/screenshots/02_hello_triangle.png" width="250">
