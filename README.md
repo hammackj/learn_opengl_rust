@@ -84,3 +84,10 @@ This example uses a build script to copy shaders to the folder so you have to ru
 
     cd learn_opengl/01_getting_started/12_shaders_exercise_03
     cargo run    
+
+## Textures
+<img src="/screenshots/13_textures.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/13_textures
+    cargo run    

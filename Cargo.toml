@@ -11,6 +11,4 @@ authors = ["hammackj"]
 [workspace.dependencies]
 gl = "0.14.0"
 glfw = "0.59.0"
-
-#[workspace.dependencies.gl]
-#git = "https://github.com/bjz/gl-rs"
+image = "0.25.6"
