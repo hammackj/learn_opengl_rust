@@ -173,6 +173,30 @@ dependencies = [
 ]
 
 [[package]]
+name = "shaders_exercise_01"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+]
+
+[[package]]
+name = "shaders_exercise_02"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+]
+
+[[package]]
+name = "shaders_exercise_03"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+]
+
+[[package]]
 name = "shaders_object"
 version = "0.1.0"
 dependencies = [

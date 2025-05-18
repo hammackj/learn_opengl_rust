@@ -1,0 +1,8 @@
+[package]
+name = "shaders_exercise_01"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gl.workspace = true
+glfw.workspace = true

@@ -63,3 +63,24 @@ This example uses a build script to copy shaders to the folder so you have to ru
 
     cd learn_opengl/01_getting_started/09_shaders_object
     cargo run
+
+## Shaders - Exercise 1
+<img src="/screenshots/10_shaders_exercise_01.png" width="50%">
+This example uses a build script to copy shaders to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/10_shaders_exercise_01
+    cargo run
+
+## Shaders - Exercise 2
+<img src="/screenshots/11_shaders_exercise_02.png" width="50%">
+This example uses a build script to copy shaders to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/11_shaders_exercise_02
+    cargo run
+
+## Shaders - Exercise 3
+<img src="/screenshots/12_shaders_exercise_03.png" width="50%">
+This example uses a build script to copy shaders to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/12_shaders_exercise_03
+    cargo run    
