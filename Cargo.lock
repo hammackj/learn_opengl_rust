@@ -1007,6 +1007,51 @@ dependencies = [
 ]
 
 [[package]]
+name = "textures_exercise_01"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+]
+
+[[package]]
+name = "textures_exercise_02"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+]
+
+[[package]]
+name = "textures_exercise_03"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+]
+
+[[package]]
+name = "textures_exercise_04"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+]
+
+[[package]]
+name = "textures_units"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+]
+
+[[package]]
 name = "thiserror"
 version = "1.0.69"
 source = "registry+https://github.com/rust-lang/crates.io-index"

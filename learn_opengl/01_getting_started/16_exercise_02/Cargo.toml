@@ -1,0 +1,9 @@
+[package]
+name = "textures_exercise_02"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gl.workspace = true
+glfw.workspace = true
+image.workspace = true
