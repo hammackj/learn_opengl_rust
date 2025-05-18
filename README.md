@@ -46,3 +46,20 @@ See https://learnopengl.com/About for more information.'
 <img src="/screenshots/06_hello_triangle_exercise_03.png" width="50%">
 
     cargo run --bin hello_triangle_exercise_03
+
+## Shaders - Uniforms
+<img src="/screenshots/07_shaders.png" width="50%">
+
+    cargo run --bin shaders
+
+## Shaders - Shader attributes
+<img src="/screenshots/08_shaders_attributes.png" width="50%">
+
+    cargo run --bin shaders    
+
+## Shaders - Shader Object
+<img src="/screenshots/09_shaders_object.png" width="50%">
+This example uses a build script to copy shaders to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/09_shaders_object
+    cargo run
