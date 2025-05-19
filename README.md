@@ -132,4 +132,18 @@ This example uses a build script to copy shaders/textures to the folder so you h
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
     cd learn_opengl/01_getting_started/19_transformations
-    cargo run   
+    cargo run 
+
+## Transforms Exercise 01
+<img src="/screenshots/20_transformations_exercise_01.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/20_transformations_exercise_01
+    cargo run       
+
+## Transforms Exercise 02
+<img src="/screenshots/21_transformations_exercise_02.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/21_transformations_exercise_02
+    cargo run       

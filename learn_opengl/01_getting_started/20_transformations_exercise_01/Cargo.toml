@@ -1,5 +1,5 @@
 [package]
-name = "transformations"
+name = "transformations_exercise_01"
 version = "0.1.0"
 edition = "2021"
 

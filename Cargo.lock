@@ -1200,7 +1200,27 @@ dependencies = [
 ]
 
 [[package]]
-name = "transformationsw"
+name = "transformations"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "transformations_exercise_01"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "transformations_exercise_02"
 version = "0.1.0"
 dependencies = [
  "gl",
