@@ -146,4 +146,32 @@ This example uses a build script to copy shaders/textures to the folder so you h
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
     cd learn_opengl/01_getting_started/21_transformations_exercise_02
+    cargo run   
+
+## Coords
+<img src="/screenshots/22_coords.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/22_coords
     cargo run       
+
+## Coords Depth
+<img src="/screenshots/23_coords_depth.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/23_coords_depth
+    cargo run     
+
+## Coords More Cubes
+<img src="/screenshots/24_coords_more_cubes.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/24_coords_more_cubes
+    cargo run 
+
+## Coords More Cubes Exercise 03
+<img src="/screenshots/25_coords_more_cubes_exercise_03.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/25_coords_more_cubes_exercise_03
+    cargo run 
