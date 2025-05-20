@@ -170,8 +170,8 @@ This example uses a build script to copy shaders/textures to the folder so you h
     cargo run 
 
 ## Coords More Cubes Exercise 03
-<img src="/screenshots/25_coords_more_cubes_exercise_03.png" width="50%">
+<img src="/screenshots/25_coords_exercise_03.png" width="50%">
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
-    cd learn_opengl/01_getting_started/25_coords_more_cubes_exercise_03
+    cd learn_opengl/01_getting_started/25_coords_exercise_03
     cargo run 

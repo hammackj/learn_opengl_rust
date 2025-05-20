@@ -130,6 +130,36 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f1fe948ff07f4bd06c30984e69f5b4899c516a3ef74f34df92a2df2ab535495"
 
 [[package]]
+name = "camera"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "camera_mouse"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "camera_walk_around"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
 name = "cc"
 version = "1.2.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
