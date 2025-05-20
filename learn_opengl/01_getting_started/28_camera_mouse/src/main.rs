@@ -259,9 +259,10 @@ fn main() {
 
             let projection;
 
+            // Note the glm rust port has these paramaters wrong lol
             projection = glm::perspective(
-                state.fov.to_radians(),
                 SCR_WIDTH as f32 / SCR_HEIGHT as f32,
+                state.fov.to_radians(),
                 0.1,
                 100.0,
             );
