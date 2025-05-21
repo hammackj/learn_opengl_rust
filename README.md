@@ -194,5 +194,12 @@ This example uses a build script to copy shaders/textures to the folder so you h
 <img src="/screenshots/28_camera_mouse.png" width="50%">
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
-    cd learn_opengl/01_getting_started/27_camera_mouse
+    cd learn_opengl/01_getting_started/28_camera_mouse
+    cargo run 
+
+## Camera Object
+<img src="/screenshots/29_camera_object.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/29_camera_object
     cargo run 

@@ -150,6 +150,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "camera_object"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
 name = "camera_walk_around"
 version = "0.1.0"
 dependencies = [
