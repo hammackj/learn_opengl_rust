@@ -596,7 +596,67 @@ dependencies = [
 ]
 
 [[package]]
+name = "light_basic"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
 name = "light_colors"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "light_exercise_01"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "light_exercise_02"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "light_exercise_03"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "light_exercise_04"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
+name = "light_specular"
 version = "0.1.0"
 dependencies = [
  "gl",

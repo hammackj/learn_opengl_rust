@@ -1,0 +1,10 @@
+[package]
+name = "light_exercise_03"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gl.workspace = true
+glfw.workspace = true
+image.workspace = true
+nalgebra-glm.workspace = true

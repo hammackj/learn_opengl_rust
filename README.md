@@ -10,6 +10,8 @@ As I am pretty much porting the C++ code to Rust. The license is the same as the
 
 See https://learnopengl.com/About for more information.'
 
+Each program is specifcially independant of any libraries or other chapters to make them as standalone as possible.
+
 
 # To Build
     cargo build
@@ -209,4 +211,39 @@ This example uses a build script to copy shaders/textures to the folder so you h
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
     cd learn_opengl/01_getting_started/30_light_colors
+    cargo run 
+
+## Light - Basic
+<img src="/screenshots/31_light_basic.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/31_light_basic
+    cargo run 
+
+## Light - Specular
+<img src="/screenshots/32_light_specular.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/32_light_specular
+    cargo run 
+
+## Light - Exercise 01
+<img src="/screenshots/33_light_exercise_01.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/33_light_exercise_01
+    cargo run 
+
+## Light - Exercise 03
+<img src="/screenshots/35_light_exercise_03.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/35_light_exercise_03
+    cargo run 
+
+## Light - Exercise 04
+<img src="/screenshots/35_light_exercise_04.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/36_light_exercise_04
     cargo run 
