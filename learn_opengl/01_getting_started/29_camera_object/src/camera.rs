@@ -64,10 +64,6 @@ impl Camera {
 
         match direction {
             CameraMovement::FORWARD => {
-                println!(
-                    "Forward front: {} Velocity: {}; Movement_speed {}; Delta_time {}",
-                    self.front, velocity, self.movement_speed, delta_time
-                );
                 self.position += self.front * velocity;
             }
             CameraMovement::BACKWARD => {

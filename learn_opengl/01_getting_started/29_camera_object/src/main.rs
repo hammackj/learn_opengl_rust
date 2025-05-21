@@ -3,9 +3,9 @@ extern crate nalgebra_glm as glm;
 use camera::Camera;
 use gl::types::GLint;
 use gl::{self};
-use glfw::ffi::glfwGetTime;
-use glfw::Context;
+use glfw::ffi::{glfwGetKey, glfwGetTime};
 use glfw::{self};
+use glfw::{Context, Glfw};
 use shader::Shader;
 
 pub mod camera;
@@ -52,6 +52,7 @@ fn main() {
     window.set_key_polling(true);
     window.set_cursor_pos_polling(true);
     window.set_scroll_polling(true);
+    window.set_sticky_keys(true);
     window.set_cursor_mode(glfw::CursorMode::Disabled);
     //window.set_scroll_callback(scroll_callback);
     gl::load_with(|ptr| window.get_proc_address(ptr) as *const _);
@@ -246,8 +247,6 @@ fn main() {
 
         shader.set_int("texture1", 0);
         shader.set_int("texture2", 1);
-
-        println!("Camera Zoom {}", camera.zoom);
     }
 
     while !window.should_close() {
@@ -343,6 +342,14 @@ fn glfw_handle_event(
     use glfw::Action;
     use glfw::Key;
 
+    unsafe {
+        let key_state = glfwGetKey(window.window_ptr(), glfw::ffi::KEY_W);
+
+        if key_state == glfw::ffi::PRESS {
+            camera.process_keyboard(camera::CameraMovement::FORWARD, state.delta_time);
+        }
+    }
+
     match event {
         glfw::WindowEvent::CursorPos(x_position, y_position) => {
             if state.first_mouse {
@@ -370,7 +377,7 @@ fn glfw_handle_event(
             }
             (Key::W | Key::A | Key::D | Key::S, Action::Press) => {
                 if key == glfw::Key::W {
-                    camera.process_keyboard(camera::CameraMovement::FORWARD, state.delta_time);
+                    //camera.process_keyboard(camera::CameraMovement::FORWARD, state.delta_time);
                 }
 
                 if key == glfw::Key::S {
