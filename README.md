@@ -183,23 +183,30 @@ This example uses a build script to copy shaders/textures to the folder so you h
     cd learn_opengl/01_getting_started/26_camera
     cargo run 
 
-## Camera Walk Around
+## Camera - Walk Around
 <img src="/screenshots/27_camera_walk_around.png" width="50%">
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
     cd learn_opengl/01_getting_started/27_camera_walk_around
     cargo run 
 
-## Camera Mouse
+## Camera - Mouse
 <img src="/screenshots/28_camera_mouse.png" width="50%">
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
     cd learn_opengl/01_getting_started/28_camera_mouse
     cargo run 
 
-## Camera Object
+## Camera - Object
 <img src="/screenshots/29_camera_object.png" width="50%">
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
     cd learn_opengl/01_getting_started/29_camera_object
+    cargo run 
+
+## Light - Colors
+<img src="/screenshots/30_light_colors.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/30_light_colors
     cargo run 

@@ -152,7 +152,7 @@ fn main() {
             3,
             gl::FLOAT,
             gl::FALSE,
-            5 * std::mem::size_of::<f32>() as i32,
+            3 * std::mem::size_of::<f32>() as i32,
             0 as *const _,
         );
         gl::EnableVertexAttribArray(0);
@@ -168,7 +168,7 @@ fn main() {
             3,
             gl::FLOAT,
             gl::FALSE,
-            5 * std::mem::size_of::<f32>() as i32,
+            3 * std::mem::size_of::<f32>() as i32,
             0 as *const _,
         );
         gl::EnableVertexAttribArray(0);
@@ -186,7 +186,7 @@ fn main() {
         }
 
         unsafe {
-            gl::ClearColor(0.2, 0.3, 0.3, 1.0);
+            gl::ClearColor(0.1, 0.1, 0.1, 1.0);
             gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
             lighting_shader.use_program();
@@ -213,6 +213,8 @@ fn main() {
 
             gl::BindVertexArray(cube_vao);
             gl::DrawArrays(gl::TRIANGLES, 0, 36);
+
+            ///////
 
             light_cube_shader.use_program();
             light_cube_shader.set_mat4("projection", projection);
@@ -333,6 +335,13 @@ fn gl_last_error() {
 
         if errno != gl::NO_ERROR {
             println!("Last GL Error = {}", errno);
+
+            match errno {
+                gl::INVALID_OPERATION => {
+                    panic!("OpenGL Invalid Operation Last Frame");
+                }
+                _ => {}
+            }
         }
     }
 }

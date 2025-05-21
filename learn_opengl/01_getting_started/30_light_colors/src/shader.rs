@@ -13,6 +13,8 @@ impl Shader {
 
         let shader = Self::compile_program(vertex_shader, fragment_shader);
 
+        //println!("[*] Shader {} compiled as {}", vertex_shader_path, shader);
+
         Shader { id: shader }
     }
 
@@ -55,6 +57,7 @@ impl Shader {
     }
 
     fn compile_program(vertex_shader: u32, fragment_shader: u32) -> u32 {
+        //println!("[*] Comple Program");
         let shader_program = unsafe { gl::CreateProgram() };
         unsafe {
             gl::AttachShader(shader_program, vertex_shader);
@@ -85,6 +88,7 @@ impl Shader {
     }
 
     pub fn use_program(&mut self) {
+        //println!("[*] use_program {}", self.id);
         unsafe { gl::UseProgram(self.id) };
     }
 
@@ -133,7 +137,7 @@ impl Shader {
             let location_name = CString::new(name.to_string()).unwrap();
             let location_name_ptr = location_name.as_ptr();
             let location = gl::GetUniformLocation(self.id, location_name_ptr);
-            gl::UniformMatrix3fv(location, 1, gl::FALSE, &glm::value_ptr(&value)[0]);
+            gl::Uniform3fv(location, 1, &glm::value_ptr(&value)[0]);
         }
     }
 }
