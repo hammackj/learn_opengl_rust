@@ -242,8 +242,15 @@ This example uses a build script to copy shaders/textures to the folder so you h
     cargo run 
 
 ## Light - Exercise 04
-<img src="/screenshots/35_light_exercise_04.png" width="50%">
+<img src="/screenshots/36_light_exercise_04.png" width="50%">
 This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
 
     cd learn_opengl/01_getting_started/36_light_exercise_04
+    cargo run 
+
+## Material
+<img src="/screenshots/37_materials.png" width="50%">
+This example uses a build script to copy shaders/textures to the folder so you have to run it in place.
+
+    cd learn_opengl/01_getting_started/37_materials
     cargo run 

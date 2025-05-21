@@ -656,6 +656,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "light_materials"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
 name = "light_specular"
 version = "0.1.0"
 dependencies = [
