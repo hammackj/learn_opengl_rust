@@ -1,7 +1,6 @@
 extern crate nalgebra_glm as glm;
 
 use camera::Camera;
-use gl::types::GLint;
 use gl::{self};
 use glfw::ffi::{glfwGetKey, glfwGetTime};
 use glfw::Context;
@@ -16,16 +15,15 @@ const SCR_HEIGHT: u32 = 600;
 
 pub struct State {
     pub wireframe: bool,
-    pub camera_position: glm::Vec3,
+
     pub delta_time: f32,
     pub last_frame: f32,
     pub first_mouse: bool,
-    pub yaw: f32,
-    pub pitch: f32,
+
     pub last_mouse_x: f32,
     pub last_mouse_y: f32,
-    pub fov: f32,
-    pub camera_front: glm::Vec3,
+
+    pub light_position: glm::Vec3,
 }
 
 fn main() {
@@ -61,16 +59,12 @@ fn main() {
 
     let mut state = State {
         wireframe: false,
-        camera_position: glm::vec3(0.0, 0.0, 3.0),
         delta_time: 0.0,
         last_frame: 0.0,
         first_mouse: true,
-        yaw: -90.0,
-        pitch: 0.0,
         last_mouse_x: SCR_WIDTH as f32 / 2.0,
         last_mouse_y: SCR_HEIGHT as f32 / 2.0,
-        fov: 45.0,
-        camera_front: glm::vec3(0.0, 0.0, -1.0),
+        light_position: glm::vec3(1.2, 1.0, 2.0),
     };
 
     let mut camera = Camera::new(
@@ -82,79 +76,68 @@ fn main() {
 
     state.wireframe = false;
 
-    let mut shader = Shader::new("assets/shaders/vertex.vs", "assets/shaders/fragment.fs");
+    let mut lighting_shader = Shader::new("assets/shaders/color.vs", "assets/shaders/color.fs");
+    let mut light_cube_shader = Shader::new(
+        "assets/shaders/light_cube.vs",
+        "assets/shaders/light_cube.fs",
+    );
 
     #[rustfmt::skip]
     let vertices = [
-        -0.5f32, -0.5, -0.5,  0.0, 0.0,
-         0.5, -0.5, -0.5,  1.0, 0.0,
-         0.5,  0.5, -0.5,  1.0, 1.0,
-         0.5,  0.5, -0.5,  1.0, 1.0,
-        -0.5,  0.5, -0.5,  0.0, 1.0,
-        -0.5, -0.5, -0.5,  0.0, 0.0,
+        -0.5f32, -0.5, -0.5, 
+         0.5, -0.5, -0.5,  
+         0.5,  0.5, -0.5,  
+         0.5,  0.5, -0.5,  
+        -0.5,  0.5, -0.5, 
+        -0.5, -0.5, -0.5, 
 
-        -0.5, -0.5,  0.5,  0.0, 0.0,
-         0.5, -0.5,  0.5,  1.0, 0.0,
-         0.5,  0.5,  0.5,  1.0, 1.0,
-         0.5,  0.5,  0.5,  1.0, 1.0,
-        -0.5,  0.5,  0.5,  0.0, 1.0,
-        -0.5, -0.5,  0.5,  0.0, 0.0,
+        -0.5, -0.5,  0.5, 
+         0.5, -0.5,  0.5,  
+         0.5,  0.5,  0.5,  
+         0.5,  0.5,  0.5,  
+        -0.5,  0.5,  0.5, 
+        -0.5, -0.5,  0.5, 
 
-        -0.5,  0.5,  0.5,  1.0, 0.0,
-        -0.5,  0.5, -0.5,  1.0, 1.0,
-        -0.5, -0.5, -0.5,  0.0, 1.0,
-        -0.5, -0.5, -0.5,  0.0, 1.0,
-        -0.5, -0.5,  0.5,  0.0, 0.0,
-        -0.5,  0.5,  0.5,  1.0, 0.0,
+        -0.5,  0.5,  0.5, 
+        -0.5,  0.5, -0.5, 
+        -0.5, -0.5, -0.5, 
+        -0.5, -0.5, -0.5, 
+        -0.5, -0.5,  0.5, 
+        -0.5,  0.5,  0.5, 
 
-         0.5,  0.5,  0.5,  1.0, 0.0,
-         0.5,  0.5, -0.5,  1.0, 1.0,
-         0.5, -0.5, -0.5,  0.0, 1.0,
-         0.5, -0.5, -0.5,  0.0, 1.0,
-         0.5, -0.5,  0.5,  0.0, 0.0,
-         0.5,  0.5,  0.5,  1.0, 0.0,
+         0.5,  0.5,  0.5,  
+         0.5,  0.5, -0.5,  
+         0.5, -0.5, -0.5,  
+         0.5, -0.5, -0.5,  
+         0.5, -0.5,  0.5,  
+         0.5,  0.5,  0.5,  
 
-        -0.5, -0.5, -0.5,  0.0, 1.0,
-         0.5, -0.5, -0.5,  1.0, 1.0,
-         0.5, -0.5,  0.5,  1.0, 0.0,
-         0.5, -0.5,  0.5,  1.0, 0.0,
-        -0.5, -0.5,  0.5,  0.0, 0.0,
-        -0.5, -0.5, -0.5,  0.0, 1.0,
+        -0.5, -0.5, -0.5, 
+         0.5, -0.5, -0.5,  
+         0.5, -0.5,  0.5,  
+         0.5, -0.5,  0.5,  
+        -0.5, -0.5,  0.5, 
+        -0.5, -0.5, -0.5, 
 
-        -0.5,  0.5, -0.5,  0.0, 1.0,
-         0.5,  0.5, -0.5,  1.0, 1.0,
-         0.5,  0.5,  0.5,  1.0, 0.0,
-         0.5,  0.5,  0.5,  1.0, 0.0,
-        -0.5,  0.5,  0.5,  0.0, 0.0,
-        -0.5,  0.5, -0.5,  0.0, 1.0
+        -0.5,  0.5, -0.5, 
+         0.5,  0.5, -0.5,  
+         0.5,  0.5,  0.5,  
+         0.5,  0.5,  0.5,  
+        -0.5,  0.5,  0.5, 
+        -0.5,  0.5, -0.5, 
     ];
 
-    let cube_positions = [
-        glm::vec3(0.0, 0.0, 0.0),
-        glm::vec3(2.0, 5.0, -15.0),
-        glm::vec3(-1.5, -2.2, -2.5),
-        glm::vec3(-3.8, -2.0, -12.3),
-        glm::vec3(2.4, -0.4, -3.5),
-        glm::vec3(-1.7, 3.0, -7.5),
-        glm::vec3(1.3, -2.0, -2.5),
-        glm::vec3(1.5, 2.0, -2.5),
-        glm::vec3(1.5, 0.2, -1.5),
-        glm::vec3(-1.3, 1.0, -1.5),
-    ];
-
-    let mut vao = 0;
+    let mut cube_vao = 0;
     let mut vbo = 0;
-
-    let mut texture: u32 = 0;
-    let mut face_texture: u32 = 0;
+    let mut light_vao = 0;
 
     unsafe {
         gl::Enable(gl::DEPTH_TEST);
 
-        gl::GenVertexArrays(1, &mut vao);
+        gl::GenVertexArrays(1, &mut cube_vao);
         gl::GenBuffers(1, &mut vbo);
 
-        gl::BindVertexArray(vao);
+        gl::BindVertexArray(cube_vao);
 
         gl::BindBuffer(gl::ARRAY_BUFFER, vbo);
         gl::BufferData(
@@ -174,79 +157,21 @@ fn main() {
         );
         gl::EnableVertexAttribArray(0);
 
+        gl::BindBuffer(gl::ARRAY_BUFFER, 0);
+
+        gl::GenVertexArrays(1, &mut light_vao);
+        gl::BindVertexArray(light_vao);
+        gl::BindBuffer(gl::ARRAY_BUFFER, vbo);
+
         gl::VertexAttribPointer(
-            1,
-            2,
+            0,
+            3,
             gl::FLOAT,
             gl::FALSE,
             5 * std::mem::size_of::<f32>() as i32,
-            (3 * std::mem::size_of::<f32>()) as *const _,
+            0 as *const _,
         );
-        gl::EnableVertexAttribArray(1);
-
-        gl::BindBuffer(gl::ARRAY_BUFFER, 0);
-
-        gl::GenTextures(1, &mut texture);
-        gl::BindTexture(gl::TEXTURE_2D, texture);
-
-        gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_S, gl::REPEAT as GLint);
-        gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_T, gl::REPEAT as GLint);
-        gl::TexParameteri(
-            gl::TEXTURE_2D,
-            gl::TEXTURE_MIN_FILTER,
-            gl::LINEAR_MIPMAP_LINEAR as GLint,
-        );
-        gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::LINEAR as GLint);
-
-        let image_data = image::open("assets/textures/container.jpg").unwrap();
-
-        gl::TexImage2D(
-            gl::TEXTURE_2D,
-            0,
-            gl::RGB as GLint,
-            image_data.width() as GLint,
-            image_data.height() as GLint,
-            0,
-            gl::RGB,
-            gl::UNSIGNED_BYTE,
-            image_data.as_bytes().as_ptr() as *const _,
-        );
-
-        gl::GenerateMipmap(gl::TEXTURE_2D);
-
-        gl::GenTextures(1, &mut face_texture);
-        gl::BindTexture(gl::TEXTURE_2D, face_texture);
-
-        gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_S, gl::REPEAT as GLint);
-        gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_WRAP_T, gl::REPEAT as GLint);
-        gl::TexParameteri(
-            gl::TEXTURE_2D,
-            gl::TEXTURE_MIN_FILTER,
-            gl::LINEAR_MIPMAP_LINEAR as GLint,
-        );
-        gl::TexParameteri(gl::TEXTURE_2D, gl::TEXTURE_MAG_FILTER, gl::LINEAR as GLint);
-
-        let mut face_data = image::open("assets/textures/awesomeface.png").unwrap();
-        face_data = face_data.flipv();
-
-        gl::TexImage2D(
-            gl::TEXTURE_2D,
-            0,
-            gl::RGB as GLint,
-            face_data.width() as GLint,
-            face_data.height() as GLint,
-            0,
-            gl::RGBA,
-            gl::UNSIGNED_BYTE,
-            face_data.as_bytes().as_ptr() as *const _,
-        );
-
-        gl::GenerateMipmap(gl::TEXTURE_2D);
-
-        shader.use_program();
-
-        shader.set_int("texture1", 0);
-        shader.set_int("texture2", 1);
+        gl::EnableVertexAttribArray(0);
     }
 
     while !window.should_close() {
@@ -264,15 +189,9 @@ fn main() {
             gl::ClearColor(0.2, 0.3, 0.3, 1.0);
             gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
-            gl::ActiveTexture(gl::TEXTURE0);
-            gl::BindTexture(gl::TEXTURE_2D, texture);
-
-            gl::ActiveTexture(gl::TEXTURE1);
-            gl::BindTexture(gl::TEXTURE_2D, face_texture);
-
-            shader.use_program();
-
-            camera.update_camera_vectors();
+            lighting_shader.use_program();
+            lighting_shader.set_vec3("objectColor", glm::vec3(1.0, 0.5, 0.31));
+            lighting_shader.set_vec3("lightColor", glm::vec3(1.0, 1.0, 1.0));
 
             let projection;
 
@@ -284,31 +203,28 @@ fn main() {
                 100.0,
             );
 
-            shader.set_mat4("projection", projection);
+            lighting_shader.set_mat4("projection", projection);
 
             let view = camera.get_view_matrix();
-            shader.set_mat4("view", view);
+            lighting_shader.set_mat4("view", view);
 
-            gl::BindVertexArray(vao);
+            let mut model = glm::Mat4::identity();
+            lighting_shader.set_mat4("model", model);
 
-            for (i, cube_position) in cube_positions.iter().enumerate() {
-                let mut model = glm::Mat4::identity();
-                model = glm::translate(&model, cube_position);
+            gl::BindVertexArray(cube_vao);
+            gl::DrawArrays(gl::TRIANGLES, 0, 36);
 
-                let mut angle: f32 = 20.0 * i as f32;
+            light_cube_shader.use_program();
+            light_cube_shader.set_mat4("projection", projection);
+            light_cube_shader.set_mat4("view", view);
 
-                if i % 3 == 0 {
-                    angle = 20.0 * glfwGetTime() as f32;
-                }
+            model = glm::Mat4::identity();
+            model = glm::translate(&model, &state.light_position);
+            model = glm::scale(&model, &glm::vec3(0.2, 0.2, 0.2));
+            light_cube_shader.set_mat4("model", model);
 
-                model = glm::rotate(&model, angle.to_radians(), &glm::vec3(1.0, 0.3, 0.5));
-
-                shader.set_mat4("model", model);
-
-                gl::DrawArrays(gl::TRIANGLES, 0, 36);
-            }
-
-            gl::BindVertexArray(0);
+            gl::BindVertexArray(light_vao);
+            gl::DrawArrays(gl::TRIANGLES, 0, 36);
 
             gl_last_error();
         }
@@ -317,9 +233,11 @@ fn main() {
     }
 
     unsafe {
-        gl::DeleteVertexArrays(1, &vao);
+        gl::DeleteVertexArrays(1, &cube_vao);
+        gl::DeleteVertexArrays(1, &light_vao);
         gl::DeleteBuffers(1, &vbo);
-        shader.delete_program();
+        light_cube_shader.delete_program();
+        lighting_shader.delete_program();
     }
 }
 

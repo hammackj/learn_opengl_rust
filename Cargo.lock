@@ -596,6 +596,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "light_colors"
+version = "0.1.0"
+dependencies = [
+ "gl",
+ "glfw",
+ "image",
+ "nalgebra-glm",
+]
+
+[[package]]
 name = "log"
 version = "0.4.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
